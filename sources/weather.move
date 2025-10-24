@@ -1,0 +1,26 @@
+module weather::weather;
+
+/// 東京の気温だけを保持するシンプルなオブジェクト
+public struct Weather has key, store {
+    id: UID,
+    tokyo: u64,
+}
+
+/// 初期化関数（モジュール発行後に自分で呼ぶ）
+public fun create(ctx: &mut TxContext) {
+    let weather = Weather {
+        id: object::new(ctx),
+        tokyo: 20, // 初期値
+    };
+    transfer::share_object(weather);
+}
+
+/// 🌡️ setter（気温を更新する）
+public fun set_temp(weather: &mut Weather, temp: u64) {
+    weather.tokyo = temp;
+}
+
+/// 👀 getter（気温を取得する）
+public fun get_temp(weather: &Weather): u64 {
+    weather.tokyo
+}
