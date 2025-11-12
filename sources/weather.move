@@ -16,11 +16,11 @@ public fun create(ctx: &mut TxContext) {
 }
 
 /// 🌡️ setter（気温を更新する）
-public fun set_temp(weather: &mut Weather, temp: u64) {
-    weather.tokyo = temp;
+public fun set_temperature(weather: &mut Weather, temperature: u64) {
+    weather.tokyo = temperature;
 }
 
 /// 👀 getter（気温を取得する）
-public fun get_temp(weather: &Weather): u64 {
+public fun get_temperature(weather: &Weather): u64 {
     weather.tokyo
 }
